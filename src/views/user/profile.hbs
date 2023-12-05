@@ -1,0 +1,43 @@
+<div class="grid gs">
+  <form action="/user/profile/{{user._id}}?_method=PATCH" enctype="multipart/form-data" method="post" id="form-profile">
+    <div class="profile-container">
+      <div class="profile-important">
+        <div class="form-group form-group-img">
+          <img class="profile-img" src="{{handleImage user.contentType user.data user.defaultImage}}" alt="">
+          <div class="upload-img">
+            <i class="fa-solid fa-camera"></i>
+            <input type="file" name="image" class="profile-file">
+          </div>
+          <div class="form-message"></div>
+        </div>
+        <div class="profile-infomation">
+          <div class="form-group {{handleErrorIsTrue name.message 'invalid'}}">
+            <label for="profile-username">username</label>
+            <input type="text" name="username" class="profile-username" id="profile-username" value="{{user.username}}">
+            <div class="form-message">{{handleError name.message ''}}</div>
+          </div>
+          <div class="form-group {{handleErrorIsTrue mail.message 'invalid'}}">
+            <label for="profile-username">email</label>
+            <input type="email" name="email" class="profile-email" value="{{user.email}}">
+            <div class="form-message">{{handleError mail.message ''}}</div>
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="profile-username">address</label>
+        <input type="text" name="address" class="profile-address" value="{{user.address}}">
+        <div class="form-message"></div>
+      </div>
+      <div class="form-group">
+        <label for="profile-username">phone</label>
+        <input type="text" name="phone" class="profile-phone" value="{{user.phone}}">
+        <div class="form-message"></div>
+      </div>
+      <div class="form-password">
+        <i class="fa-solid fa-pen"></i>
+        <a href="" class="change-password">Change Password</a>
+      </div>
+      <button class="profile-btn btn btn-primary">Save</button>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,52 @@
+<div class="show-tour grid gs">
+  <div class="img-tour" style="background: url({{course.image}}) no-repeat center">
+  </div>
+  <div class="content-tour">
+    <h3 class="title-tour">{{course.name}}</h3>
+    <div class="container-product-content__star">
+      <i class="fa-solid fa-star"></i>
+      <i class="fa-solid fa-star"></i>
+      <i class="fa-solid fa-star"></i>
+      <i class="fa-solid fa-star"></i>
+      <i class="fa-regular fa-star"></i>
+      <span class="test">55 review</span>
+    </div>
+    <div class="price-tour">
+      <span class="price-total">$ {{course.price}}</span>
+    </div>
+    <div class="description-tour">
+      <p>{{course.description}}</p>
+    </div>
+    <div class="tour-quantity">
+      <span class="text-quantity">Quantity</span>
+      <div class="btn-quantity">
+        <input class="number-quantity" type="text" value="{{course.quantity}}" readonly>
+        <button class="btn-quantity__count">+</button>
+        <button class="btn-quantity__count">-</button>
+      </div>
+    </div>
+      <div class="btn-tour">
+        <button class="btn btn-primary"><a class="addCartBtn" href="/course/add-to-cart/{{course._id}}">Add To Card</a></button>
+        <button class="btn btn-primary">Buy</button>
+      </div>
+  </div>
+</div>
+
+<div class="relate-tour grid gs">
+  <h2 class="relate-heading">Relate</h2>
+  <div class="row">
+    {{#each courseAll}}
+    <div class="column p-2-4 t-6 m-12">
+      <div class="container-product">
+        <a href="/course/{{slug}}">
+          <div href="#" class="container-product-bg">
+            <figure class="container-product-bg__img" style="background: url({{image}}) top/cover no-repeat;">
+            </figure>
+            <a href="" class="container-product-bg__info">{{name}}</a>
+          </div>
+        </a>
+      </div>
+    </div>
+    {{/each}}
+  </div>
+</div>

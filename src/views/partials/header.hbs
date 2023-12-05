@@ -1,0 +1,128 @@
+<div class="grid gs">
+  <section class="navbar-mobile">
+    <div class="navbar-mobile__category">
+      <i class="navbar-mobile__category-icon fa-solid fa-bars"></i>
+    </div>
+    <div class="navbar-mobile__info">
+      <i class="navbar-mobile__info-search fa-solid fa-magnifying-glass"></i>
+      <i class="navbar-mobile__info-search fa-sharp fa-solid fa-bell"></i>
+    </div>
+  </section>
+  <section class="category">
+    <div class="category-navbar">
+      <i class="category-navbar__icon fa-sharp fa-solid fa-xmark"></i>
+      <ul class="category-navbar-list">
+        <li class="category-navbar-list__item">
+          <i class="category-navbar-list__icon fa-solid fa-right-to-bracket"></i>
+          <a href="" class="category-navbar-list__item-link">Login</a>
+        </li>
+        <div class="category-navbar-list__line"></div>
+        <li class="category-navbar-list__item">
+          <i class="category-navbar-list__icon fa-solid fa-house"></i>
+          <a href="" class="category-navbar-list__item-link">Home</a>
+        </li>
+        <li class="category-navbar-list__item">
+          <i class="category-navbar-list__icon fa-solid fa-circle-info"></i>
+          <a href="/forums" class="category-navbar-list__item-link">Forums</a>
+        </li>
+        <li class="category-navbar-list__item">
+          <i class="category-navbar-list__icon fa-solid fa-user"></i>
+          <a href="" class="category-navbar-list__item-link">Profile</a>
+        </li>
+        <li class="category-navbar-list__item">
+          <i class="category-navbar-list__icon fa-solid fa-address-book"></i>
+          <a href="" class="category-navbar-list__item-link">Contact</a>
+        </li>
+        <div class="category-navbar-list__line"></div>
+        <li class="category-navbar-list__item">
+          <i class="category-navbar-list__icon fa-solid fa-gear"></i>
+          <a href="" class="category-navbar-list__item-link">Settings</a>
+        </li>
+      </ul>
+    </div>
+  </section>
+  <section class="navbar">
+    <a href="/" class="navbar__logo">
+      <img class="navbar__logo-img" src="/images/logo/logo.png" alt="">
+    </a>
+    <nav class="navbar-nav">
+      <ul class="navbar-nav-list">
+        <li class="navbar-nav-list-item">
+          <a href="/" class="navbar-nav-list-item__link active js-navbar">Home</a>
+          <a href="/forums" class="navbar-nav-list-item__link js-navbar">Forums</a>
+          <a href="/profile" class="navbar-nav-list-item__link js-navbar">Profile</a>
+          <a href="/contact" class="navbar-nav-list-item__link js-navbar">Contact</a>
+        </li>
+      </ul>
+    </nav>
+    <div class="navbar-list">
+      <article class="navbar-list-item">
+        <label for="psudo-check">
+          <div class="navbar-list-item__option">
+            <i class="navbar-list-item__option-icon fa-solid fa-earth-americas"></i>
+            <span class="navbar-list-item__option-language">English</span>
+            <i class="navbar-list-item__option-icon fa-solid fa-chevron-down"></i>
+          </div>
+        </label>
+        {{#if user}}
+        <div class="navbar-logined">
+          <div class="cart-group-warp">
+            <div class="cart-group">
+              <a href="/cart" class="cart-link">
+                <span class="cart-group__quantity">{{totalQuantity session.tour.items session.course.items}}</span>
+                <i class="cart-group__icon fa-solid fa-cart-shopping"></i>
+              </a>
+            </div>
+          </div>
+          <a class="form-chip" href="/{{userId.slug}}">
+            <div class="form-chip">
+              <div class="form-chip-img">
+                <img src="{{handleImage userId.contentType userId.data userId.defaultImage}}" alt="">
+              </div>
+              <div class="form-chip-info">
+                <span class="form-chip-name">{{userId.username}}</span>
+              </div>
+              <div class="navbar-avatar__warp">
+                <form class="navbar-form" action="/user/logout?_method=DELETE" method="post">
+                  <ul class="navbar-avatar-list">
+                    <li class="navbar-avatar-item"><a href="/{{userId.slug}}">My Accout</a></li>
+                    <li class="navbar-avatar-item"><a href="">My Post</a></li>
+                    <li class="navbar-avatar-item"><button type="submit">Logout</button></li>
+                  </ul>
+                </form>
+              </div>
+            </div>
+          </a>
+        </div>
+        {{else}}
+        <div class="navbar-log">
+          <button class="navbar-list-item__btn navbar-list-item__btn--login js-btn-login" type="submit"><a href="/user/login">Login</a></button>
+          <button class="navbar-list-item__btn navbar-list-item__btn--signup js-btn-signup" type="submit">
+            <a href="/user/signup">Signup</a>
+          </button>
+        </div>
+        {{/if}}
+      </article>
+      <input type="checkbox" id="psudo-check" hidden class="psudo-check__input">
+      <aside class="language-option">
+        <ul class="language-option-list">
+          <li class="language-option-list-item">
+            <a href="#" class="language-option-list-item__link">
+              <img class="language-option-list-item__link-img"
+                src="https://img.icons8.com/?size=512&id=2egPD0I7yi4-&format=png" alt="">
+              <span class="language-option-list-item__link-span">Việt Nam</span>
+            </a>
+          </li>
+          <li class="language-option-list-item">
+            <a href="#" class="language-option-list-item__link">
+              <img class="language-option-list-item__link-img"
+                src="https://img.icons8.com/?size=512&id=xapj7ZzAUZKI&format=png" alt="">
+              <span class="language-option-list-item__link-span">EngLish</span>
+            </a>
+          </li>
+        </ul>
+
+      </aside>
+    </div>
+  </section>
+</div>

@@ -1,0 +1,22 @@
+<section class="container-courses">
+  <div class="grid gs">
+    <h3 class="result">Coures</h3>
+    <div class="row">
+      {{#each course}}
+      <article class="column p-12">
+        <div class="courses">
+          {{!-- courses-item--md show negative --}}
+          <figure class="courses-item">
+            <img class="courses-item__img" src="{{image}}" alt="">
+          </figure>
+          <div class="courses-info">
+            <h2 class="courses-info__heading">{{name}}</h2>
+            <p class="courses-info__text text--style">{{description}}</p>
+            <button class="btn btn-md"><a href="/course/{{slug}}">LEARN MORE</a></button>
+          </div>
+        </div>
+      </article>
+      {{/each}}
+    </div>
+  </div>
+</section>
