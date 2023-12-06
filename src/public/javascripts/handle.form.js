@@ -37,3 +37,13 @@ validate({
     email('.profile-email'),
   ]
 })
+// form checkout
+validate({
+  form: '#form-checkout',
+  group: '.form-group',
+  error: '.form-message',
+  color: 'invalid',
+  rules: [
+    requied('.user__input-name'),
+  ]
+})

@@ -25,7 +25,9 @@ const form = {
       }
     }
     // handle course
-    course_item.forEach((item, index) => index % 2 !== 0 ? item.classList.add('courses-item--md') : null)
+    course_item.forEach((item, index) => index % 2 !== 0 ? item.classList.add('courses-item--md') : null);
+
+    
     this.increaseIndex('.btn-quantity__count', quantity);
     // request get quantity
     const btnSubmit = $('.addCartBtn');
@@ -36,7 +38,6 @@ const form = {
           "Content-Type": "application/json",
         },
       })
-      console.log(response)
       if (response.redirected) window.location.href = response.url
     }
     if (btnSubmit)
@@ -48,12 +49,13 @@ const form = {
     const file = $('.profile-container .profile-file');
     const image = $('.profile-container .profile-img');
     const reader = new FileReader();
-    file.onchange = (e) => {
-      reader.readAsDataURL(e.target.files[0]);
-      reader.onload = function () {
-        image.src = this.result
+    if (file)
+      file.onchange = (e) => {
+        reader.readAsDataURL(e.target.files[0]);
+        reader.onload = function () {
+          image.src = this.result
+        }
       }
-    }
   },
   increaseIndex(operator, quantity) {
     const operation = [...$$(operator)]

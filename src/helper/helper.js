@@ -6,4 +6,5 @@ export default {
   handleError: (a, b) => a || b,
   handleErrorIsTrue: (a, b) => a && b,
   handleImage: (contentType, data, url) => contentType && data ? `data:image/${contentType};base64,${data.toString('base64')}` : url,
+  handleImages: (a, b, contentType, data, url) => contentType && data ? `data:image/${contentType};base64,${data.toString('base64')}` : url,
 }

@@ -13,24 +13,24 @@
         <div class="profile-infomation">
           <div class="form-group {{handleErrorIsTrue name.message 'invalid'}}">
             <label for="profile-username">username</label>
-            <input type="text" name="username" class="profile-username" id="profile-username" value="{{user.username}}">
+            <input type="text" name="username" class="profile-username" id="profile-username" value="{{handleError username user.username}}">
             <div class="form-message">{{handleError name.message ''}}</div>
           </div>
           <div class="form-group {{handleErrorIsTrue mail.message 'invalid'}}">
             <label for="profile-username">email</label>
-            <input type="email" name="email" class="profile-email" value="{{user.email}}">
+            <input type="email" name="email" class="profile-email" value="{{handleError email user.email}}">
             <div class="form-message">{{handleError mail.message ''}}</div>
           </div>
         </div>
       </div>
       <div class="form-group">
         <label for="profile-username">address</label>
-        <input type="text" name="address" class="profile-address" value="{{user.address}}">
+        <input type="text" name="address" class="profile-address" value="{{handleError address user.address}}">
         <div class="form-message"></div>
       </div>
       <div class="form-group">
         <label for="profile-username">phone</label>
-        <input type="text" name="phone" class="profile-phone" value="{{user.phone}}">
+        <input type="text" name="phone" class="profile-phone" value="{{handleError phone user.phone}}">
         <div class="form-message"></div>
       </div>
       <div class="form-password">

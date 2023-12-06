@@ -1,5 +1,8 @@
-import jwt from 'jsonwebtoken';
-import User from '../models/User.js'
+import User from '../models/User.js';
+import Stripe from 'stripe';
+import Course from '../models/Course.js';
+import Tour from '../models/Tour.js';
+
 export default new class UserController {
   // handle login
   async login(req, res, next) {
@@ -29,10 +32,7 @@ export default new class UserController {
   }
 
   // verify token
-
   async verifyToken(req, res, next) {
-    const accessToken = jwt.sign({ user: { ...req.body } }, process.env.TOKEN_SECERT, { expiresIn: '1d' });
-    // const token = req.headers.authorization || req.headers.Authorization;
     res.redirect('/')
   }
   async verifySignup(req, res, next) {
@@ -45,13 +45,31 @@ export default new class UserController {
       contentType = req.file.mimetype;
     }
     const { username, email, address, phone } = req.body;
-    const user = await User.findOneAndUpdate({ username, email }, {
-      username, email, address, phone,
+    await User.findOneAndUpdate({ _id: req.params.id }, {
+      username, email, address, phone, slug: `@${username}`,
       data: buffer,
       contentType
-    })
-    if (!user) res.send(`error`);
-    res.redirect(`/@${user.username}`)
+    });
+    const user = await User.findOne({ username })
+    if (user)
+      res.redirect(`/${user.slug}`)
+    else res.send(`error`);
   }
+  async checkout(req, res, next) {
+    const course = await Course.findById({ _id: req.params.id }).lean();
+    const tour = await Tour.findById({ _id: req.params.id }).lean();
+    console.log(course)
+    console.log(tour)
+    res.render('user/checkout', { course, tour });
+  }
+  async charge(req, res, next) {
+    const { name, card_number, date, cvv } = req.body;
+    // const stripe = new Stripe(`sk_test_51OFYQ5DvCO20FIDGJe0Ci5dUP2NGLoVcBSJl4VUI8Rj1oMitzJ1SOwIJczTKVRLDZqtS00UNMR9SqgNtvH6GrRDj00Id98l0ix`);
+    // const customer = await stripe.customers.create({
+    //   currency:'usd',
 
+    // })
+    // console.log(customer)
+    res.end(`success`)
+  }
 }

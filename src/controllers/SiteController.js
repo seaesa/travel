@@ -48,11 +48,11 @@ export default new class SiteController {
   async user(req, res, next) {
     const user = await User.findOne({ username: req.params.username }).lean();
     if (!user) res.render(`error/error`, { layout: `error` });
-    const error = req.flash().error
+    const error = req.flash().error;
     if (error)
       for (let item of error) {
-        const { name, mail } = item;
-        res.render(`user/profile`, { user, name, mail });
+        const { name, mail, username, email, address, phone } = item;
+        res.render(`user/profile`, { user, name, mail, username, email, address, phone });
       }
     else res.render(`user/profile`, { user });
   }

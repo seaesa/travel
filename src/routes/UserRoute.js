@@ -20,6 +20,9 @@ router.delete('/logout', asyncHandler(userController.logout))
 
 // change profile
 router.patch('/profile/:id', upload.single('image'), authenProfile(passport), asyncHandler(userController.changeProfile))
+router.route('/checkout/:id')
+  .get(checkGuest, asyncHandler(userController.checkout))
+  .post(checkGuest, asyncHandler(userController.charge))
 
 
 export default router;

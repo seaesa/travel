@@ -1480,6 +1480,7 @@ input[type="button"] {
   border-radius: 20px;
   position: relative;
   min-height: 320px;
+
   .form-group input {
     border: none;
     outline: none;
@@ -1503,7 +1504,7 @@ input[type="button"] {
     top: -10px;
     font-style: italic;
     color: #5e5e5e;
-    
+
   }
 
   .profile-img {
@@ -1576,6 +1577,7 @@ input[type="button"] {
   .profile-phone {
     width: 50%;
   }
+
   .form-password {
     position: absolute;
     bottom: 0;
@@ -1584,22 +1586,112 @@ input[type="button"] {
     display: flex;
     align-items: center;
   }
+
   .form-password:hover {
     opacity: .8;
   }
+
   .form-password a {
     text-decoration: none;
     color: #2b2b2b;
     margin-left: 10px;
   }
+
   .form-password i {
     color: #2b2b2b;
     font-size: 1.4rem;
   }
+
   .profile-btn {
     position: absolute;
     bottom: 0;
     right: 10px;
     margin: 10px;
+  }
+}
+
+/*  checkout */
+/* .form-checkout {
+  max-width: 70%;
+  margin: 20px auto;
+  padding: 10px;
+} */
+
+.mainscreen {
+  padding: 30px 0;
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+  background-color: #ededed;
+  border-radius: 20px;
+  margin: 30px auto;
+  color: var(--o-color);
+  box-shadow: 0 0 20px #e2e2e2;
+  .card {
+    width: 90%;
+    margin: auto;
+    background: white;
+    position: center;
+    align-self: center;
+    top: 50rem;
+    border-radius: 1.5rem;
+    box-shadow: 4px 3px 20px #3535358c;
+    display: flex;
+    flex-direction: row;
+  }
+
+  .leftside {
+    background: #030303;
+    width: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-top-left-radius: 1.5rem;
+    border-bottom-left-radius: 1.5rem;
+  }
+
+  .product {
+    object-fit: contain;
+    max-width: 100%;
+  }
+
+  .rightside {
+    background-color: #ffffff;
+    width: 35rem;
+    border-bottom-right-radius: 1.5rem;
+    border-top-right-radius: 1.5rem;
+    padding: 1rem 2rem 3rem 3rem;
+  }
+
+  @media only screen and (max-width: 1000px) {
+    .card {
+      flex-direction: column;
+      width: auto;
+
+    }
+
+    .leftside {
+      width: 100%;
+      border-top-right-radius: 0;
+      border-bottom-left-radius: 0;
+      border-top-right-radius: 0;
+      border-radius: 0;
+    }
+
+    .rightside {
+      width: auto;
+      border-bottom-left-radius: 1.5rem;
+      padding: 0.5rem 3rem 3rem 2rem;
+      border-radius: 0;
+    }
+  }
+  .btn-checkout {
+    text-align: center;
+    color: var(--white-color);
+    font-size: 1.4rem;
+    margin-top: 20px;
+    width: 100px;
+    margin-left: auto;
+    display: block;
   }
 }

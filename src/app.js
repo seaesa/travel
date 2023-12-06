@@ -10,8 +10,8 @@ import flash from 'connect-flash';
 import Router from './routes/index.js'
 import connectDB from './db/db.js'
 import verify from './config/passport.js'
-import helper from './helper/helper.js';
-import { sureGuest } from './middleware/handleAuth.js';
+import helpers from './helper/helper.js';
+import { sureGuest, isPresent } from './middleware/handleAuth.js';
 
 // init application
 const app = express();
@@ -57,11 +57,12 @@ app.set('view engine', 'hbs');
 // set ext engine, custom 
 app.engine('hbs', engine({
   extname: 'hbs',
-  helpers: { ...helper }
+  helpers
 }));
 
 // check authencation
 app.use(sureGuest)
+app.use(isPresent)
 
 //loger
 if (process.env.NODE_ENV === 'development') app.use(morgan('dev'))

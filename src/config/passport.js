@@ -44,6 +44,6 @@ export default (passport) => {
     if (user) return cb(null, user)
     else return cb(null, false)
   }));
-  passport.serializeUser((user, cb) => cb(null, user.id));
+  passport.serializeUser(async (user, cb) => cb(null, user.id));
   passport.deserializeUser(async (id, cb) => cb(null, User.findById(id)));
 }

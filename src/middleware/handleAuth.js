@@ -10,18 +10,25 @@ const handleAuth = {
     }
     else return next();
   },
+  isPresent: async (req, res, next) => {
+    if (req.session.passport?.user) {
+      const { user } = req.session.passport;
+      const isUser = await User.findById({ _id: user });
+      if (!isUser) req.logout(() => res.redirect('/'));
+      else return next();
+    } else return next();
+  },
   checkGuest: async (req, res, next) => {
     if (req.isAuthenticated()) return next();
     else res.redirect('/user/login');
   },
   isAdmin: async (req, res, next) => {
     const role = await User.findById(req.session.passport.user).lean()
-    if (role.role !== 'admin') res.render('error/error', { layout: 'error' });
+    if (role.role !== 'admin') res.render('error/permission', { layout: 'error' });
     else return next();
   },
   authenLogin: passport => passport.authenticate('locals.login', { failureRedirect: '/user/login' }),
   authenSignup: passport => passport.authenticate('locals.signup', { failureRedirect: '/user/signup' }),
   authenProfile: passport => passport.authenticate('locals.profile', { failureRedirect: 'back' })
-
 }
-export const { sureGuest, checkGuest, authenLogin, authenSignup, authenProfile, isAdmin } = handleAuth
+export const { sureGuest, checkGuest, authenLogin, authenSignup, authenProfile, isAdmin, isPresent } = handleAuth
