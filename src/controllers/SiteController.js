@@ -19,35 +19,10 @@ export default new class SiteController {
   contact(req, res, next) {
     res.render(`contact`);
   }
-  admin(req, res, next) {
-    res.render(`admin`);
-  }
-  async createTour(req, res, next) {
-    await Tour.create(req.body);
-    res.redirect('/')
-  }
-  async createCourse(req, res, next) {
-    console.log(`success`)
-    await Course.create(req.body);
-    res.redirect('/')
-  }
-  // show cart
-  async showCart(req, res, next) {
-    let tour, course;
-    if (req.session.tour) {
-      const tours = new TourCart(req.session.tour);
-      tour = tours.generate();
-    }
-    if (req.session.course) {
-      const courses = new CourseCart(req.session.course);
-      course = courses.generate();
-    }
-    res.render(`cart/cart`, { tour, course });
-  }
   //user
   async user(req, res, next) {
     const user = await User.findOne({ username: req.params.username }).lean();
-    if (!user) res.render(`error/error`, { layout: `error` });
+    if (!user) return next();
     const error = req.flash().error;
     if (error)
       for (let item of error) {

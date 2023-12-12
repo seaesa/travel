@@ -13,17 +13,17 @@
       <article class="column p-4 t-6 m-12">
         <div class="container-product">
           <a href="/tour/{{this.slug}}">
-            <div href="#" class="container-product-bg">
+            <div class="container-product-bg">
               <figure class="container-product-bg__img" style="background: url({{this.image}}) top/cover no-repeat;">
               </figure>
-              <a href="" class="container-product-bg__info">
+              <a href="/tour/{{this.slug}}" class="container-product-bg__info">
                 {{this.name}}
               </a>
             </div>
           </a>
           <div class="container-product-content">
             <span class="container-product-content__price">
-              $ {{this.price}} <span>for the trip</span>
+              $ {{handlePrice this.price}} <span>for the trip</span>
             </span>
             <div class="container-product-content__star">
               <i class="fa-solid fa-star"></i>

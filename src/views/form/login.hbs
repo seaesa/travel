@@ -18,7 +18,7 @@
         <div class="user__input">
           <i class="fa-solid fa-envelope user__input-icon"></i>
           <input type="email" placeholder="email" name="email" class="user__input-email"
-            value="{{handleError email ''}}">
+            value="{{handleError email ''}}" autocomplete="username">
         </div>
         <span class="form-message">
           {{#if mess.mail.message}}
@@ -30,7 +30,7 @@
         <div class="user__input">
           <i class="fa-solid fa-lock user__input-icon"></i>
           <input type="password" placeholder="Password" name="password" class="user__input-pass"
-            value="{{handleError password ''}}">
+            value="{{handleError password ''}}" autocomplete="current-password">
         </div>
         <span class="form-message">
           {{#if mess.pass.message}}

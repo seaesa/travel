@@ -12,7 +12,7 @@
       <span class="test">55 review</span>
     </div>
     <div class="price-tour">
-      <span class="price-total">$ {{tour.price}}</span>
+      <span class="price-total">${{handlePrice tour.price}}</span>
     </div>
     <div class="description-tour">
       <p>{{tour.description}}</p>
@@ -26,8 +26,8 @@
       </div>
     </div>
     <div class="btn-tour">
-      <button class="btn btn-primary"><a class="addCartBtn" href="/tour/add-to-cart/{{tour._id}}">Add To Card</a></button>
-      <button class="btn btn-primary"><a href="/user/checkout/{{tour._id}}">Buy</a></button>
+      <button class="btn btn-primary"><a class="addCartBtn" href="/cart/add/{{tour._id}}">Add To Card</a></button>
+      <button class="btn btn-primary"><a class="buy-payment" href="/user/checkout/{{tour._id}}">Buy</a></button>
     </div>
   </div>
 </div>

@@ -13,7 +13,6 @@
   "dependencies": {
     "@adminjs/express": "^6.1.0",
     "@adminjs/mongoose": "^4.0.0",
-    "@adminjs/upload": "^4.0.1",
     "adminjs": "^7.4.2",
     "bcrypt": "^5.1.1",
     "connect-flash": "^0.1.1",

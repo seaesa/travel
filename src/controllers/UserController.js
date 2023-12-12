@@ -1,7 +1,10 @@
 import User from '../models/User.js';
-import Stripe from 'stripe';
 import Course from '../models/Course.js';
 import Tour from '../models/Tour.js';
+import Stripe from 'stripe';
+const endpointSecret = "whsec_6127f8ac47ac7c16d7d5475e685e8016a1e358524a799a14eca40ba523e79612";
+// config payment
+const stripe = new Stripe(process.env.STRIPE_PRIVATE_KEY || process.env.STRIPE_PUBLIC_KEY || `sk_test_51OFYQ5DvCO20FIDGJe0Ci5dUP2NGLoVcBSJl4VUI8Rj1oMitzJ1SOwIJczTKVRLDZqtS00UNMR9SqgNtvH6GrRDj00Id98l0ix`);
 
 export default new class UserController {
   // handle login
@@ -56,20 +59,30 @@ export default new class UserController {
     else res.send(`error`);
   }
   async checkout(req, res, next) {
-    const course = await Course.findById({ _id: req.params.id }).lean();
-    const tour = await Tour.findById({ _id: req.params.id }).lean();
-    console.log(course)
-    console.log(tour)
-    res.render('user/checkout', { course, tour });
+    const { id } = req.params;
+    const course = await Course.findById({ _id: id }).lean();
+    const tour = await Tour.findById({ _id: id }).lean();
+    res.render('user/checkout', { id, tour, course });
   }
   async charge(req, res, next) {
-    const { name, card_number, date, cvv } = req.body;
-    // const stripe = new Stripe(`sk_test_51OFYQ5DvCO20FIDGJe0Ci5dUP2NGLoVcBSJl4VUI8Rj1oMitzJ1SOwIJczTKVRLDZqtS00UNMR9SqgNtvH6GrRDj00Id98l0ix`);
-    // const customer = await stripe.customers.create({
-    //   currency:'usd',
-
-    // })
-    // console.log(customer)
-    res.end(`success`)
+    const { name, price } = req.entityProduct
+    const session = await stripe.checkout.sessions.create({
+      success_url: `${process.env.URL_WEBSITE}:${process.env.PORT}`,
+      mode: 'payment',
+      payment_method_types: ['card'],
+      line_items: [{
+        price_data: {
+          currency: 'usd',
+          product_data: { name },
+          unit_amount: price
+        },
+        quantity: req.body.quantity
+      }],
+    });
+    res.json({ url: session.url });
+  }
+  async webhook(req, res, next) {
+    console.log(req)
+    console.log(req.body)
   }
 }

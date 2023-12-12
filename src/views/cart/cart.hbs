@@ -13,27 +13,25 @@
     <div class="cart-item-wrap">
       {{#each tour}}
       <div class="cart-item">
-        <a class="cart-item__product" href="/tour/{{item.slug}}">
-          <div class="cart-item__img" style="background: url({{item.image}}) no-repeat center center/80px 80px;">
+        <a class="cart-item__product" href="/tour/{{this.slug}}">
+          <div class="cart-item__img" style="background: url({{this.image}}) no-repeat center center/80px 80px;">
           </div>
           <div class="cart-item-header">
-            <h4 class="cart-item__heading">{{item.name}}</h4>
-            <span class="cart-item__title">{{item.description}}</span>
+            <h4 class="cart-item__heading">{{this.name}}</h4>
+            <span class="cart-item__title">{{this.description}}</span>
           </div>
         </a>
-        <div class="cart-item__price">{{item.price}}</div>
+        <div class="cart-item__price">${{handlePrice this.price}}</div>
         <div class="cart-item__quantity">
           <div class="btn-quantity">
-            <input class="number-quantity" type="text" value="{{quantity}}" readonly>
+            <input class="number-quantity" type="text" value="{{this.quantity}}" readonly>
           </div>
         </div>
-        <div class="cart-item__total">{{price}}</div>
+        <div class="cart-item__total">${{handlePrice this.totalPrice}}</div>
         <div class="cart-item__action">
-          <form action="/tour/delete/{{item._id}}?_method=DELETE" method="post">
-            <button type="submit" class="btn-reset">
-              <i class="fa-solid fa-xmark"></i>
-            </button>
-          </form>
+          <a href="/cart/delete/{{this._id}}" type="submit" class="btn-reset btn-delete-cart">
+            <i class="fa-solid fa-xmark"></i>
+          </a>
           <button type="submit" class="btn btn-primary">Buy</button>
         </div>
       </div>
@@ -56,27 +54,25 @@
     <div class="cart-item-wrap">
       {{#each course}}
       <div class="cart-item">
-        <a class="cart-item__product" href="/course/{{item.slug}}">
-          <div class="cart-item__img" style="background: url({{item.image}}) no-repeat center center/80px 80px;">
+        <a class="cart-item__product" href="/course/{{this.slug}}">
+          <div class="cart-item__img" style="background: url({{this.image}}) no-repeat center center/80px 80px;">
           </div>
           <div class="cart-item-header">
-            <h4 class="cart-item__heading">{{item.name}}</h4>
-            <span class="cart-item__title">{{item.description}}</span>
+            <h4 class="cart-item__heading">{{this.name}}</h4>
+            <span class="cart-item__title">{{this.description}}</span>
           </div>
         </a>
-        <div class="cart-item__price">{{item.price}}</div>
+        <div class="cart-item__price">${{handlePrice this.price}}</div>
         <div class="cart-item__quantity">
           <div class="btn-quantity">
             <input class="number-quantity" type="text" value="{{quantity}}" readonly>
           </div>
         </div>
-        <div class="cart-item__total">{{price}}</div>
+        <div class="cart-item__total">${{handlePrice this.totalPrice}}</div>
         <div class="cart-item__action">
-          <form action="/course/delete/{{item._id}}?_method=DELETE" method="post">
-            <button type="submit" class="btn-reset">
-              <i class="fa-solid fa-xmark"></i>
-            </button>
-          </form>
+          <a href="/cart/delete/{{this._id}}" type="submit" class="btn-reset btn-delete-cart">
+            <i class="fa-solid fa-xmark"></i>
+          </a>
           <button type="submit" class="btn btn-primary">Buy</button>
         </div>
       </div>

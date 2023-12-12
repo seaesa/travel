@@ -1,78 +1,23 @@
-{{!-- <div class="grid gs">
-  <form action="/user/checkout/{{id}}" method="post">
-    <div class="form-checkout">
-      <div class="form-group">
-        <div class="user__input">
-          <i class="fa-solid fa-user user__input-icon"></i>
-          <input type="text" placeholder="Username" name="username" class="user__input-name">
-        </div>
-        <span class="form-message"> </span>
-      </div>
-      <div class="form-group ">
-        <div class="user__input">
-          <i class="fa-solid fa-envelope user__input-icon"></i>
-          <input type="email" placeholder="email" name="email" class="user__input-email">
-        </div>
-        <span class="form-message"> </span>
-      </div>
-      <div class="form-group ">
-        <div class="user__input">
-          <i class="fa-solid fa-lock user__input-icon"></i>
-          <input type="password" placeholder="Password" name="password" class="user__input-pass">
-        </div>
-        <span class="form-message"> </span>
-      </div>
-      <button class="user__btn">Login</button>
-  </form>
-  <div class="user-info">
-    <a href="" class="user-info__forgot">Forgot Password</a>
-    <a href="/user/signup" class="user-info__sin text--style">Sign Up</a>
-  </div>
-</div>
-</form>
-</div> --}}
-
-
-
 <div class="grid gs">
   <div class="mainscreen">
     <div class="card">
       <div class="leftside">
-        <img src="{{handleError course.image tour.image}}" class="product"  alt="Shoes"/>
+        <img src="{{handleError course.image tour.image}}" class="product" alt="Shoes" />
       </div>
       <div class="rightside">
-        <form action="/user/checkout/{{id}}" method="post" id="form-checkout">
-          <h1>CheckOut</h1>
-          <div class="form-group">
-            <div class="user__input">
-              <i class="fa-solid fa-user user__input-icon"></i>
-              <input type="text" placeholder="Cardholder Name" name="name" class="user__input-name">
-            </div>
-            <span class="form-message"> </span>
+        <h3 class="title-tour">{{tour.name}}</h3>
+        <div class="price-tour">
+          <span class="price-total">${{handlePrice (handleError tour.price course.price)}}</span>
+        </div>
+        <div class="tour-quantity">
+          <span class="text-quantity">Quantity</span>
+          <div class="btn-quantity">
+            <input class="number-quantity" name="quantity" type="text" value="1" readonly>
+            <button class="btn-quantity__count">+</button>
+            <button class="btn-quantity__count">-</button>
           </div>
-          <div class="form-group">
-            <div class="user__input">
-              <i class="fa-solid fa-user user__input-icon"></i>
-              <input type="text" placeholder="Card Number" name="card_number" class="user__input-name">
-            </div>
-            <span class="form-message"> </span>
-          </div>
-          <div class="form-group">
-            <div class="user__input">
-              <i class="fa-solid fa-user user__input-icon"></i>
-              <input type="date" placeholder="Expiry" name="date" class="user__input-name">
-            </div>
-            <span class="form-message"> </span>
-          </div>
-          <div class="form-group">
-            <div class="user__input">
-              <i class="fa-solid fa-user user__input-icon"></i>
-              <input type="password" placeholder="CVV" name="cvv" class="user__input-name">
-            </div>
-            <span class="form-message"> </span>
-          </div>
-          <button class="btn btn-primary btn-checkout">Checkout</>
-        </form>
+        </div>
+        <button data-id="{{handleError course._id tour._id}}" data-title="{{handleProduct tour course}}" class="btn btn-primary btn-checkout">Checkout</button>
       </div>
     </div>
   </div>

@@ -1627,6 +1627,7 @@ input[type="button"] {
   margin: 30px auto;
   color: var(--o-color);
   box-shadow: 0 0 20px #e2e2e2;
+
   .card {
     width: 90%;
     margin: auto;
@@ -1638,29 +1639,37 @@ input[type="button"] {
     box-shadow: 4px 3px 20px #3535358c;
     display: flex;
     flex-direction: row;
+    padding: 40px 20px;
   }
 
   .leftside {
     background: #030303;
     width: 50%;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    border-top-left-radius: 1.5rem;
-    border-bottom-left-radius: 1.5rem;
+    border-radius: 10px;
+    overflow: hidden;
+    height: 250px;
   }
 
   .product {
-    object-fit: contain;
-    max-width: 100%;
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
   }
 
   .rightside {
     background-color: #ffffff;
-    width: 35rem;
-    border-bottom-right-radius: 1.5rem;
-    border-top-right-radius: 1.5rem;
-    padding: 1rem 2rem 3rem 3rem;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    padding: 0 10px;
+    justify-content: center;
+    .title-tour{
+      color: #030303;
+      margin: 10px 0;
+    }
+    .price-total {
+      color: #000;
+    }
   }
 
   @media only screen and (max-width: 1000px) {
@@ -1685,6 +1694,7 @@ input[type="button"] {
       border-radius: 0;
     }
   }
+
   .btn-checkout {
     text-align: center;
     color: var(--white-color);
