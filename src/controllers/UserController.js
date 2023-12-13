@@ -81,8 +81,8 @@ export default new class UserController {
     });
     res.json({ url: session.url });
   }
-  async webhook(req, res, next) {
-    console.log(req)
-    console.log(req.body)
+  async buyed(req, res, next) {
+    const ticket = await stripe.checkout.sessions.list({});
+    res.json(ticket)
   }
 }

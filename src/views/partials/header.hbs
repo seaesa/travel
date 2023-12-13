@@ -83,20 +83,22 @@
                 <span class="form-chip-name">{{userId.username}}</span>
               </div>
               <div class="navbar-avatar__warp">
-                <form class="navbar-form" action="/user/logout?_method=DELETE" method="post">
-                  <ul class="navbar-avatar-list">
-                    <li class="navbar-avatar-item"><a href="/{{userId.slug}}">My Accout</a></li>
-                    <li class="navbar-avatar-item"><a href="">My Post</a></li>
+                <ul class="navbar-avatar-list">
+                  <li class="navbar-avatar-item"><a href="/{{userId.slug}}">My Accout</a></li>
+                  <li class="navbar-avatar-item"><a href="">My Post</a></li>
+                  <li class="navbar-avatar-item"><a href="/user/buyed">Buyed</a></li>
+                  <form class="navbar-form" action="/user/logout?_method=DELETE" method="post">
                     <li class="navbar-avatar-item"><button type="submit">Logout</button></li>
-                  </ul>
-                </form>
+                  </form>
+                </ul>
               </div>
             </div>
           </a>
         </div>
         {{else}}
         <div class="navbar-log">
-          <button class="navbar-list-item__btn navbar-list-item__btn--login js-btn-login" type="submit"><a href="/user/login">Login</a></button>
+          <button class="navbar-list-item__btn navbar-list-item__btn--login js-btn-login" type="submit"><a
+              href="/user/login">Login</a></button>
           <button class="navbar-list-item__btn navbar-list-item__btn--signup js-btn-signup" type="submit">
             <a href="/user/signup">Signup</a>
           </button>

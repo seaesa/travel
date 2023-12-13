@@ -25,5 +25,5 @@ router.route('/checkout/:id')
   .get(isGuest, asyncHandler(userController.checkout))
   .post(isGuest, diffProduct, asyncHandler(userController.charge))
 
-router.post('/webhook', asyncHandler(userController.test))
+router.get('/buyed', asyncHandler(userController.buyed))
 export default router;
