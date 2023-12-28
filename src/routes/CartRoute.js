@@ -5,7 +5,7 @@ import cartController from '../controllers/CartController.js';
 import { diffProduct, isGuest } from '../middleware/check.js'
 
 
-router.post('/add/:id', asyncHandler(diffProduct), asyncHandler(cartController.add));
+router.post('/add/:id', asyncHandler(isGuest), asyncHandler(diffProduct), asyncHandler(cartController.add));
 router.delete('/delete/:id', asyncHandler(cartController.remove));
 router.get('/', asyncHandler(isGuest), asyncHandler(cartController.index));
 
