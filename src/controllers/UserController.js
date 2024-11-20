@@ -67,7 +67,7 @@ export default new class UserController {
   async charge(req, res, next) {
     const { name, price } = req.entityProduct
     const session = await stripe.checkout.sessions.create({
-      success_url: `${process.env.URL_WEBSITE}:${process.env.PORT}`,
+      success_url: process.env.URL_WEBSITE,
       mode: 'payment',
       payment_method_types: ['card'],
       line_items: [{
