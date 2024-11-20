@@ -5,9 +5,8 @@
   "type": "module",
   "main": "src/app.js",
   "scripts": {
-    "start": "cross-env NODE_ENV=production node --experimental-modules src/app.js",
-    "dev": "cross-env NODE_ENV=development nodemon --experimental-modules src/app.js",
-    "build": "echo ok"
+    "start": "cross-env NODE_ENV=production NODE_OPTIONS='--no-warnings' node --experimental-modules src/app.js",
+    "dev": "cross-env NODE_ENV=development NODE_OPTIONS='--no-warnings' nodemon --experimental-modules src/app.js"
   },
   "author": "hai",
   "license": "MIT",

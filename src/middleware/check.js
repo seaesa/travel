@@ -3,7 +3,7 @@ import Course from '../models/Course.js';
 import Tour from '../models/Tour.js';
 import Cart from '../models/Cart.js';
 
-export const { sureGuest, isPresent, isGuest, isAdmin, diffProduct, isExist, idTest } = {
+export const { sureGuest, isPresent, isGuest, isAdmin, diffProduct, isExist } = {
   sureGuest: async (req, res, next) => {
     if (req.isAuthenticated()) {
       res.locals.user = req.isAuthenticated();

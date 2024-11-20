@@ -11,7 +11,7 @@ import Router from './routes/index.js';
 import connectDB from './db/db.js'
 import verify from './config/passport.js'
 import helpers from './helper/helper.js';
-import { sureGuest, isPresent, idTest } from './middleware/check.js';
+import { sureGuest, isPresent } from './middleware/check.js';
 
 // init application
 const app = express();
@@ -22,14 +22,12 @@ import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-// config env
-if (process.env.NODE_ENV === 'development') {
-  dotenv.config({ path: '.env.local' });
-  app.use(morgan('dev'));
-}
+// config env 
+app.use(morgan('dev'));
+dotenv.config({ path: '.env.local' });
 
 // set folder static
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, '../public')));
 
 // overide method
 app.use(methodOverride('_method'));
@@ -76,6 +74,4 @@ Router(app);
 
 // start server
 const port = process.env.PORT || 5000;
-app.listen(port, () => console.log(`app listening on mode ${process.env.NODE_ENV}`));
-
-export default app
+app.listen(port, () => console.log(`app listening on mode ${process.env.NODE_ENV}`)); 
