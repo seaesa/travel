@@ -1,12 +1,13 @@
 {
-  "name": "travel",
+  "name": "travel-app",
   "version": "1.0.0",
   "description": "app travel basic with nodejs",
   "type": "module",
   "main": "src/app.js",
   "scripts": {
     "start": "cross-env NODE_ENV=production node --experimental-modules src/app.js",
-    "dev": "cross-env NODE_ENV=development nodemon --experimental-modules --inspect src/app.js"
+    "dev": "cross-env NODE_ENV=development nodemon --experimental-modules src/app.js",
+    "build": "echo ok"
   },
   "author": "hai",
   "license": "MIT",

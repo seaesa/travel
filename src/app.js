@@ -23,7 +23,10 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 // config env
-dotenv.config({ path: path.join(__dirname, `./config/config.env`) });
+if (process.env.NODE_ENV === 'development') {
+  dotenv.config({ path: '.env.local' });
+  app.use(morgan('dev'));
+}
 
 // set folder static
 app.use(express.static(path.join(__dirname, 'public')));
@@ -65,9 +68,6 @@ app.engine('hbs', engine({
 app.use(sureGuest);
 app.use(isPresent);
 
-//loger
-if (process.env.NODE_ENV === 'development') app.use(morgan('dev'));
-
 // connect DB
 connectDB();
 
@@ -76,4 +76,6 @@ Router(app);
 
 // start server
 const port = process.env.PORT || 5000;
-app.listen(port, () => console.log(`app listening on mode ${process.env.NODE_ENV} in http://127.0.0.1:${port}`));
+app.listen(port, () => console.log(`app listening on mode ${process.env.NODE_ENV}`));
+
+export default app
